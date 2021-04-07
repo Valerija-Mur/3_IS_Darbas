@@ -1,0 +1,10 @@
+C:\Users\Hunter\Desktop\IS\3_Darbas_RSA\3_Darbas_RSA\bin\Debug\3_Darbas_RSA.exe.config
+C:\Users\Hunter\Desktop\IS\3_Darbas_RSA\3_Darbas_RSA\bin\Debug\3_Darbas_RSA.exe
+C:\Users\Hunter\Desktop\IS\3_Darbas_RSA\3_Darbas_RSA\bin\Debug\3_Darbas_RSA.pdb
+C:\Users\Hunter\Desktop\IS\3_Darbas_RSA\3_Darbas_RSA\obj\Debug\3_Darbas_RSA.csprojAssemblyReference.cache
+C:\Users\Hunter\Desktop\IS\3_Darbas_RSA\3_Darbas_RSA\obj\Debug\_3_Darbas_RSA.Form1.resources
+C:\Users\Hunter\Desktop\IS\3_Darbas_RSA\3_Darbas_RSA\obj\Debug\_3_Darbas_RSA.Properties.Resources.resources
+C:\Users\Hunter\Desktop\IS\3_Darbas_RSA\3_Darbas_RSA\obj\Debug\3_Darbas_RSA.csproj.GenerateResource.cache
+C:\Users\Hunter\Desktop\IS\3_Darbas_RSA\3_Darbas_RSA\obj\Debug\3_Darbas_RSA.csproj.CoreCompileInputs.cache
+C:\Users\Hunter\Desktop\IS\3_Darbas_RSA\3_Darbas_RSA\obj\Debug\3_Darbas_RSA.exe
+C:\Users\Hunter\Desktop\IS\3_Darbas_RSA\3_Darbas_RSA\obj\Debug\3_Darbas_RSA.pdb
