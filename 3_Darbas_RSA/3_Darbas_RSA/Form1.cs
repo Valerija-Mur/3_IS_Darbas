@@ -9,7 +9,7 @@ namespace _3_Darbas_RSA
     {
         byte[] paprastasTekstas;
         byte[] sifruotasTekstas;
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -19,13 +19,13 @@ namespace _3_Darbas_RSA
         {
             try
             {
-
                 //Create a UnicodeEncoder to convert between byte array and string.
                 UnicodeEncoding ByteConverter = new UnicodeEncoding();
-
+                paprastasTekstas = ByteConverter.GetBytes(Tekstas_txt.Text);;
                 //Create byte arrays to hold original, encrypted, and decrypted data.
-                byte[] dataToEncrypt = ByteConverter.GetBytes("Data to Encrypt");
+                byte[] dataToEncrypt = paprastasTekstas;
                 byte[] encryptedData;
+                byte[] decryptedData;
 
                 //Create a new instance of RSACryptoServiceProvider to generate
                 //public and private key data.
@@ -36,14 +36,22 @@ namespace _3_Darbas_RSA
                     //(using RSACryptoServiceProvider.ExportParameters(false),
                     //and a boolean flag specifying no OAEP padding.
                     encryptedData = RSAEncrypt(dataToEncrypt, RSA.ExportParameters(false), false);
+                    Sifruotas_txt.Text=ByteConverter.GetString(encryptedData);
+                    //Pass the data to DECRYPT, the private key information 
+                    //(using RSACryptoServiceProvider.ExportParameters(true),
+                    //and a boolean flag specifying no OAEP padding.
+                    decryptedData = RSADecrypt(encryptedData, RSA.ExportParameters(true), false);
 
                     //Display the decrypted plaintext to the console. 
-                    Console.WriteLine("Encrypted plaintext: {0}", ByteConverter.GetString(encryptedData));
+                    
+                    Console.WriteLine("Decrypted plaintext: {0}", ByteConverter.GetString(decryptedData));
                 }
             }
-            catch (Exception)
+            catch (ArgumentNullException)
             {
-                Console.WriteLine("Error");
+                //Catch this exception in case the encryption did
+                //not succeed.
+                Console.WriteLine("Encryption failed.");
             }
         }
 
@@ -53,7 +61,7 @@ namespace _3_Darbas_RSA
             {
                 //Create a UnicodeEncoder to convert between byte array and string.
                 UnicodeEncoding ByteConverter = new UnicodeEncoding();
-
+                sifruotasTekstas=ByteConverter.GetBytes(Sifruotas_txt.Text);
                 byte[] decryptedData;
 
                 //Create a new instance of RSACryptoServiceProvider to generate
@@ -66,7 +74,7 @@ namespace _3_Darbas_RSA
                     decryptedData = RSADecrypt(sifruotasTekstas, RSA.ExportParameters(true), false);
 
                     //Display the decrypted plaintext to the console. 
-                    Console.WriteLine("Decrypted plaintext: {0}", ByteConverter.GetString(decryptedData));
+                    Tekstas_txt.Text= ByteConverter.GetString(decryptedData);
                 }
             }
 
