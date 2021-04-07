@@ -7,8 +7,11 @@ namespace _3_Darbas_RSA
 {
     public partial class Form1 : Form
     {
-        byte[] paprastasTekstas;
-        byte[] sifruotasTekstas;
+        UnicodeEncoding ByteConverter = new UnicodeEncoding();
+        RSACryptoServiceProvider RSA = new RSACryptoServiceProvider();
+        byte[] plaintext;
+        byte[] encryptedtext;
+
 
         public Form1()
         {
@@ -17,132 +20,53 @@ namespace _3_Darbas_RSA
 
         private void Si_btn_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //Create a UnicodeEncoder to convert between byte array and string.
-                UnicodeEncoding ByteConverter = new UnicodeEncoding();
-                paprastasTekstas = ByteConverter.GetBytes(Tekstas_txt.Text);;
-                //Create byte arrays to hold original, encrypted, and decrypted data.
-                byte[] dataToEncrypt = paprastasTekstas;
-                byte[] encryptedData;
-                byte[] decryptedData;
-
-                //Create a new instance of RSACryptoServiceProvider to generate
-                //public and private key data.
-                using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider())
-                {
-
-                    //Pass the data to ENCRYPT, the public key information 
-                    //(using RSACryptoServiceProvider.ExportParameters(false),
-                    //and a boolean flag specifying no OAEP padding.
-                    encryptedData = RSAEncrypt(dataToEncrypt, RSA.ExportParameters(false), false);
-                    Sifruotas_txt.Text=ByteConverter.GetString(encryptedData);
-                    //Pass the data to DECRYPT, the private key information 
-                    //(using RSACryptoServiceProvider.ExportParameters(true),
-                    //and a boolean flag specifying no OAEP padding.
-                    decryptedData = RSADecrypt(encryptedData, RSA.ExportParameters(true), false);
-
-                    //Display the decrypted plaintext to the console. 
-                    
-                    Console.WriteLine("Decrypted plaintext: {0}", ByteConverter.GetString(decryptedData));
-                }
-            }
-            catch (ArgumentNullException)
-            {
-                //Catch this exception in case the encryption did
-                //not succeed.
-                Console.WriteLine("Encryption failed.");
-            }
+            plaintext = ByteConverter.GetBytes(Tekstas_txt.Text);
+            encryptedtext = Encryption(plaintext, RSA.ExportParameters(false), false);
+            Sifruotas_txt.Text = ByteConverter.GetString(encryptedtext);
         }
 
         private void de_btn_Click(object sender, EventArgs e)
         {
-            try
-            {
-                //Create a UnicodeEncoder to convert between byte array and string.
-                UnicodeEncoding ByteConverter = new UnicodeEncoding();
-                sifruotasTekstas=ByteConverter.GetBytes(Sifruotas_txt.Text);
-                byte[] decryptedData;
-
-                //Create a new instance of RSACryptoServiceProvider to generate
-                //public and private key data.
-                using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider())
-                {
-                    //Pass the data to DECRYPT, the private key information 
-                    //(using RSACryptoServiceProvider.ExportParameters(true),
-                    //and a boolean flag specifying no OAEP padding.
-                    decryptedData = RSADecrypt(sifruotasTekstas, RSA.ExportParameters(true), false);
-
-                    //Display the decrypted plaintext to the console. 
-                    Tekstas_txt.Text= ByteConverter.GetString(decryptedData);
-                }
-            }
-
-            catch (ArgumentNullException)
-            {
-                //Catch this exception in case the encryption did
-                //not succeed.
-                Console.WriteLine("Encryption failed.");
-            }
+            byte[] decryptedtex = Decryption(encryptedtext,RSA.ExportParameters(true), false);
+            Tekstas_txt.Text = ByteConverter.GetString(decryptedtex);
         }
 
-        
-        
-        public static byte[] RSAEncrypt(byte[] DataToEncrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding)
+        static public byte[] Encryption(byte[] Data, RSAParameters RSAKey, bool DoOAEPPadding)
         {
             try
             {
                 byte[] encryptedData;
-                //Create a new instance of RSACryptoServiceProvider.
                 using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider())
                 {
-
-                    //Import the RSA Key information. This only needs
-                    //toinclude the public key information.
-                    RSA.ImportParameters(RSAKeyInfo);
-
-                    //Encrypt the passed byte array and specify OAEP padding.  
-                    //OAEP padding is only available on Microsoft Windows XP or
-                    //later.  
-                    encryptedData = RSA.Encrypt(DataToEncrypt, DoOAEPPadding);
+                    RSA.ImportParameters(RSAKey);
+                    encryptedData = RSA.Encrypt(Data, DoOAEPPadding);
                 }
                 return encryptedData;
             }
-            //Catch and display a CryptographicException  
-            //to the console.
             catch (CryptographicException e)
             {
                 Console.WriteLine(e.Message);
-
                 return null;
             }
         }
 
-        public static byte[] RSADecrypt(byte[] DataToDecrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding)
+
+
+        static public byte[] Decryption(byte[] Data, RSAParameters RSAKey, bool DoOAEPPadding)
         {
             try
             {
                 byte[] decryptedData;
-                //Create a new instance of RSACryptoServiceProvider.
                 using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider())
                 {
-                    //Import the RSA Key information. This needs
-                    //to include the private key information.
-                    RSA.ImportParameters(RSAKeyInfo);
-
-                    //Decrypt the passed byte array and specify OAEP padding.  
-                    //OAEP padding is only available on Microsoft Windows XP or
-                    //later.  
-                    decryptedData = RSA.Decrypt(DataToDecrypt, DoOAEPPadding);
+                    RSA.ImportParameters(RSAKey);
+                    decryptedData = RSA.Decrypt(Data, DoOAEPPadding);
                 }
                 return decryptedData;
             }
-            //Catch and display a CryptographicException  
-            //to the console.
             catch (CryptographicException e)
             {
                 Console.WriteLine(e.ToString());
-
                 return null;
             }
         }
