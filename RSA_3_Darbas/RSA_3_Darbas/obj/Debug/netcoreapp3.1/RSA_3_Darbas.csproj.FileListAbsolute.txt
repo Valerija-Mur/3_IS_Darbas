@@ -1,0 +1,15 @@
+C:\Users\Hunter\Desktop\IS\RSA_3_Darbas\RSA_3_Darbas\bin\Debug\netcoreapp3.1\RSA_3_Darbas.exe
+C:\Users\Hunter\Desktop\IS\RSA_3_Darbas\RSA_3_Darbas\bin\Debug\netcoreapp3.1\RSA_3_Darbas.deps.json
+C:\Users\Hunter\Desktop\IS\RSA_3_Darbas\RSA_3_Darbas\bin\Debug\netcoreapp3.1\RSA_3_Darbas.runtimeconfig.json
+C:\Users\Hunter\Desktop\IS\RSA_3_Darbas\RSA_3_Darbas\bin\Debug\netcoreapp3.1\RSA_3_Darbas.runtimeconfig.dev.json
+C:\Users\Hunter\Desktop\IS\RSA_3_Darbas\RSA_3_Darbas\bin\Debug\netcoreapp3.1\RSA_3_Darbas.dll
+C:\Users\Hunter\Desktop\IS\RSA_3_Darbas\RSA_3_Darbas\bin\Debug\netcoreapp3.1\RSA_3_Darbas.pdb
+C:\Users\Hunter\Desktop\IS\RSA_3_Darbas\RSA_3_Darbas\obj\Debug\netcoreapp3.1\RSA_3_Darbas.csprojAssemblyReference.cache
+C:\Users\Hunter\Desktop\IS\RSA_3_Darbas\RSA_3_Darbas\obj\Debug\netcoreapp3.1\RSA_3_Darbas.Form1.resources
+C:\Users\Hunter\Desktop\IS\RSA_3_Darbas\RSA_3_Darbas\obj\Debug\netcoreapp3.1\RSA_3_Darbas.csproj.GenerateResource.cache
+C:\Users\Hunter\Desktop\IS\RSA_3_Darbas\RSA_3_Darbas\obj\Debug\netcoreapp3.1\RSA_3_Darbas.AssemblyInfoInputs.cache
+C:\Users\Hunter\Desktop\IS\RSA_3_Darbas\RSA_3_Darbas\obj\Debug\netcoreapp3.1\RSA_3_Darbas.AssemblyInfo.cs
+C:\Users\Hunter\Desktop\IS\RSA_3_Darbas\RSA_3_Darbas\obj\Debug\netcoreapp3.1\RSA_3_Darbas.csproj.CoreCompileInputs.cache
+C:\Users\Hunter\Desktop\IS\RSA_3_Darbas\RSA_3_Darbas\obj\Debug\netcoreapp3.1\RSA_3_Darbas.dll
+C:\Users\Hunter\Desktop\IS\RSA_3_Darbas\RSA_3_Darbas\obj\Debug\netcoreapp3.1\RSA_3_Darbas.pdb
+C:\Users\Hunter\Desktop\IS\RSA_3_Darbas\RSA_3_Darbas\obj\Debug\netcoreapp3.1\RSA_3_Darbas.genruntimeconfig.cache

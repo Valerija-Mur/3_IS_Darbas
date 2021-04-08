@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "xIbeNiwPwcGKoGLuRJKVYE0tj8dtzAdK3cnwjEPzUk6zFbl970FDU7/fGzap3s9ypGIsAduinuNJDYndtJAY7g==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Hunter\\Desktop\\IS\\RSA_3_Darbas\\RSA_3_Darbas\\RSA_3_Darbas.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Hunter\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.14\\microsoft.netcore.app.host.win-x64.3.1.14.nupkg.sha512"
+  ],
+  "logs": []
+}
