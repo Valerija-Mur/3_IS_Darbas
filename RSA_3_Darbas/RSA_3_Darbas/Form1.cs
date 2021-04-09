@@ -10,12 +10,8 @@ namespace RSA_3_Darbas
 {
     public partial class Form1 : Form
     {
-
-        UnicodeEncoding ByteConverter = new UnicodeEncoding();
-        RSACryptoServiceProvider RSA = new RSACryptoServiceProvider();
-        string pub;
-        string _privateKeyXML;
-        string _publicKeyXml;
+        string privateKeyXML;
+        string publicKeyXml;
         Dictionary<string, string> keyDictionary = new Dictionary<string, string>();
 
 
@@ -32,8 +28,8 @@ namespace RSA_3_Darbas
             {
                 using (var rsaServer = new RSACryptoServiceProvider(2048))
                 {
-                    _privateKeyXML = rsaServer.ToXmlString(true);
-                    _publicKeyXml = rsaServer.ToXmlString(false);
+                    privateKeyXML = rsaServer.ToXmlString(true);
+                    publicKeyXml = rsaServer.ToXmlString(false);
                 }
 
                 string tempString = textBox1.Text;
@@ -41,10 +37,10 @@ namespace RSA_3_Darbas
                 byte[] encryptedBytes = null;
                 using (var rsaClient = new RSACryptoServiceProvider(2048))
                 {
-                    rsaClient.FromXmlString(_publicKeyXml);
+                    rsaClient.FromXmlString(publicKeyXml);
                     encryptedBytes = rsaClient.Encrypt(inputBytes, false);
                     textBox2.Text= Convert.ToBase64String(encryptedBytes);
-                    keyDictionary.Add(_privateKeyXML, textBox2.Text);
+                    keyDictionary.Add(privateKeyXML, textBox2.Text);
                     using (StreamWriter w = File.AppendText("keys.txt"))
                     {
                         foreach (var entry in keyDictionary)
@@ -53,7 +49,7 @@ namespace RSA_3_Darbas
                 }
                 using (StreamWriter writer = File.AppendText("publicKey.txt"))
                 {
-                    writer.Write(_publicKeyXml);
+                    writer.Write(publicKeyXml);
                 }
             }
             catch (ArgumentNullException)
